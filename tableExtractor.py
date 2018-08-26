@@ -38,16 +38,20 @@ for person in data:
 	tempdata.append([name, uni])
 data = tempdata
 
+numStudents = len(data)
+print("There were %s students in the class of 2018.  " % numStudents)
+
 unisDict = Counter(unis)
 
 orderedUnis = [(k, unisDict[k]) for k in sorted(unisDict, key=unisDict.get, reverse=True)]
 for uni in orderedUnis:
+	percent = uni[1]/numStudents*100
 	if "Working full time" in uni[0] or "Undecided" in uni[0]:
 		if uni[1] is 1:
-			print(str(uni[1]) + " Troy High School student is " + uni[0].lower() + ".")
+			print(str(uni[1]) + " Troy High School student is " + uni[0].lower() + ". " + "{:.2f}".format(percent) + "%  ")
 		else:
-			print(str(uni[1]) + " Troy High School students are " + uni[0].lower() + ".")
+			print(str(uni[1]) + " Troy High School students are " + uni[0].lower() + ". " + "{:.2f}".format(percent) + "%  ")
 	elif uni[1] is 1:
-		print(str(uni[1]) + " Troy High School student attends " + uni[0] + ".")
+		print(str(uni[1]) + " Troy High School student attends " + uni[0] + ". " + "{:.2f}".format(percent) + "%  ")
 	else:
-		print(str(uni[1]) + " Troy High School students attend " + uni[0] + ".")
+		print(str(uni[1]) + " Troy High School students attend " + uni[0] + ". " + "{:.2f}".format(percent) + "%  ")
